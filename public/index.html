@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bloco de Notas</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-layout">
+    <!-- Barra Superior -->
+    <header class="app-header">
+      <div class="header-left">
+        <div class="brand">
+          <span class="brand-icon">📒</span>
+          <h1>Bloco de Notas</h1>
+        </div>
+      </div>
+
+      <div class="header-center">
+        <div class="search-bar">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="searchInput" placeholder="Pesquisar por título ou texto..." autocomplete="off">
+          <button id="clearSearchBtn" class="clear-search-btn" title="Limpar busca" style="display: none;">&times;</button>
+        </div>
+      </div>
+
+      <div class="header-right">
+        <button class="btn btn-primary" id="openCreateModalBtn">
+          <span class="btn-icon">+</span> Nova Nota
+        </button>
+      </div>
+    </header>
+
+    <!-- Área Principal de Conteúdo -->
+    <main class="main-content">
+      <div class="content-header">
+        <h2 id="sectionTitle">Todas as Notas</h2>
+        <span id="notesCount" class="notes-count">0 notas</span>
+      </div>
+
+      <!-- Grid de Notas -->
+      <div id="notesGrid" class="notes-grid">
+        <!-- Preenchido dinamicamente via app.js -->
+      </div>
+
+      <!-- Estado Vazio -->
+      <div id="emptyState" class="empty-state" style="display: none;">
+        <div class="empty-illustration">📝</div>
+        <h3>Nenhuma nota encontrada</h3>
+        <p>Comece criando sua primeira anotação clicando no botão abaixo.</p>
+        <button class="btn btn-primary" id="emptyCreateBtn">+ Criar Nota</button>
+      </div>
+    </main>
+  </div>
+
+  <!-- Modal Criar / Editar Nota -->
+  <div class="modal-backdrop" id="noteModal" aria-hidden="true">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="modalTitle">Nova Nota</h3>
+        <button class="icon-button" id="closeModalBtn" title="Fechar">&times;</button>
+      </div>
+
+      <form id="noteForm">
+        <input type="hidden" id="noteId">
+
+        <div class="form-field">
+          <label for="noteTitleInput">Título</label>
+          <input type="text" id="noteTitleInput" placeholder="Ex: Ideias para o projeto..." required maxlength="120">
+        </div>
+
+        <div class="form-field">
+          <label for="noteContentInput">Conteúdo</label>
+          <textarea id="noteContentInput" rows="7" placeholder="Digite aqui o conteúdo da sua nota..."></textarea>
+        </div>
+
+        <div class="form-field">
+          <label>Cor da Nota</label>
+          <div class="color-options" id="colorPickerGroup">
+            <label class="color-bubble">
+              <input type="radio" name="noteColor" value="#ffffff" checked>
+              <span class="color-preview" style="background-color: #ffffff;" title="Branco"></span>
+            </label>
+            <label class="color-bubble">
+              <input type="radio" name="noteColor" value="#fef08a">
+              <span class="color-preview" style="background-color: #fef08a;" title="Amarelo"></span>
+            </label>
+            <label class="color-bubble">
+              <input type="radio" name="noteColor" value="#bbf7d0">
+              <span class="color-preview" style="background-color: #bbf7d0;" title="Verde"></span>
+            </label>
+            <label class="color-bubble">
+              <input type="radio" name="noteColor" value="#bae6fd">
+              <span class="color-preview" style="background-color: #bae6fd;" title="Azul"></span>
+            </label>
+            <label class="color-bubble">
+              <input type="radio" name="noteColor" value="#fbcfe8">
+              <span class="color-preview" style="background-color: #fbcfe8;" title="Rosa"></span>
+            </label>
+            <label class="color-bubble">
+              <input type="radio" name="noteColor" value="#fed7aa">
+              <span class="color-preview" style="background-color: #fed7aa;" title="Laranja"></span>
+            </label>
+            <label class="color-bubble">
+              <input type="radio" name="noteColor" value="#e9d5ff">
+              <span class="color-preview" style="background-color: #e9d5ff;" title="Roxo"></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="btn btn-subtle" id="cancelModalBtn">Cancelar</button>
+          <button type="submit" class="btn btn-primary" id="saveNoteBtn">Salvar Nota</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast de Notificação -->
+  <div id="toast" class="toast" role="alert" style="display: none;"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
+
