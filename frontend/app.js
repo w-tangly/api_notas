@@ -1,5 +1,5 @@
-// Elementos do DOM
-const API_URL = '/api/notes';
+// Elementos do DOM e Configuração da API
+const API_URL = 'http://localhost:3000/api/notes';
 
 const notesGrid = document.getElementById('notesGrid');
 const emptyState = document.getElementById('emptyState');
