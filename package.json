@@ -1,14 +1,11 @@
 {
-  "name": "api_notas",
+  "name": "api_notas_workspace",
   "version": "1.0.0",
-  "description": "Bloco de Notas com Express e Interface Web",
-  "main": "server.js",
+  "description": "Workspace com Backend e Frontend separados para o Bloco de Notas",
   "scripts": {
-    "start": "node server.js",
-    "dev": "node --watch server.js"
-  },
-  "dependencies": {
-    "body-parser": "^2.3.0",
-    "express": "^5.2.1"
+    "start:backend": "npm start --prefix backend",
+    "dev:backend": "npm run dev --prefix backend",
+    "start:frontend": "npm start --prefix frontend",
+    "dev:frontend": "npm run dev --prefix frontend"
   }
 }
